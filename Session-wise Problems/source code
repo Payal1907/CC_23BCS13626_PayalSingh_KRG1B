@@ -1,0 +1,41 @@
+//no of jobs done and max profit
+
+#include<bits/stdc++.h>
+using namespace std;
+void maxProfit(vector<vector<int>>& jobs){
+        int jobs = 0;
+        int mxp = 0;
+        priority_queue<pair<int,int>> pq;
+        for(int i=0;i<jobs.size();i++){
+            pq.push({jobs[2],jobs[1]});
+        }
+        int n = jobs.size();
+        vector<int> hash(n,0);
+        while(!pq.empty()){
+            auto it = pq.top();
+            pq.pop();
+            for(int i=it.second;i>=0;i--){
+                if(hash[i]==0){]
+                jobs++;
+                mxp+=it.first;
+                hash[i]=1;
+                break;
+            }
+        }
+        cout<<"Total jobs: "<<jobs<<endl;
+        cout<<"Maximum Profit: "<<mxp<<endl;
+    }
+int main(){
+    int n;
+    cin>>n;
+    vector<vector<int>> jobs(n);
+    for(int i=0;i<n;i++){
+        int job_id;
+        int deadline;
+        int profit;
+        cin>>job_id>>deadline>>profit;
+        jobs[i]={job_id,deadline,profit};
+    }
+    maxProfit(jobs);
+    return 0;
+}
